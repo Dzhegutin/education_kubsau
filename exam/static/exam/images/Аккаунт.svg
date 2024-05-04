@@ -1,0 +1,37 @@
+<svg width="1440" height="934" viewBox="0 0 1440 934" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_320_242)">
+<rect width="1440" height="934" fill="white"/>
+<path d="M0 0H1440V934H0V0Z" fill="#1C1C20"/>
+<g style="mix-blend-mode:lighten" filter="url(#filter0_f_320_242)">
+<path d="M1155.78 564.557C1358.85 802.38 1519.46 1078.02 1495.31 1120.61C1150.25 777.049 1059.08 1066.4 856.004 828.573C652.932 590.749 967.899 539.436 805.087 293.523C829.24 250.93 952.707 326.733 1155.78 564.557Z" fill="url(#paint0_linear_320_242)"/>
+</g>
+<g filter="url(#filter1_f_320_242)">
+<path d="M0 133H1440V934H0V133Z" fill="url(#paint1_linear_320_242)" fill-opacity="0.1"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_320_242" x="575.861" y="72.9734" width="1131.16" height="1256.94" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="104.65" result="effect1_foregroundBlur_320_242"/>
+</filter>
+<filter id="filter1_f_320_242" x="-8" y="125" width="1456" height="817" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="4" result="effect1_foregroundBlur_320_242"/>
+</filter>
+<linearGradient id="paint0_linear_320_242" x1="713.491" y1="346.08" x2="1269.23" y2="1258.34" gradientUnits="userSpaceOnUse">
+<stop offset="0.783043" stop-color="#147A12"/>
+<stop offset="1" stop-color="#4CAF50"/>
+</linearGradient>
+<linearGradient id="paint1_linear_320_242" x1="720" y1="211.727" x2="729.537" y2="933.874" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C1C20"/>
+<stop offset="0.292344" stop-color="#12B93F"/>
+<stop offset="0.759197" stop-color="#158C36"/>
+<stop offset="1" stop-color="#1C1C20"/>
+</linearGradient>
+<clipPath id="clip0_320_242">
+<rect width="1440" height="934" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="icon" href="/icons/logo1.svg">
+    <link rel="stylesheet" href="/styles/my_acc.css">
+    <script src="/scripts/my_acc.js" defer></script>
+</head>
+<body>
+    <header class="header">
+      <div class="title-form">
+          <img 
+          src="/icons/logo.svg" 
+          alt="logo" 
+          class="header-logo-image"
+          width="61" height="50" loading="lazy"
+          />
+          ExamPro
+      </div>
+        <nav class="header-menu">
+            <ul class="header-menu-list">
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/">Мои авторы</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/">Мои тесты</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link is-current" href="/">Аккаунт</a>
+              </li>
+              <li class="header-menu-item">
+            </ul>
+        </nav>
+        <div class="search_block">
+          <form> 
+            <input type="search" name="text" class="search" placeholder="Введите автора или тему">
+            <input type="submit" name="submit" class="submit" value="">
+          </form>
+        </div>
+        
+    </header>
+    <article>
+      <div class="left-column">
+        <div class="avatar-frame">
+          <img src="/icons/Ellipse 1.svg" alt="Avatar">
+        </div>
+          <p id="name" class="name"></p>
+          <p id="profession"></p>
+          <p id="organization"></p>
+        <input type="file" id="avatar-upload" accept="image/*">
+        <label for="avatar-upload" class="download_btn">Загрузить аватар</label>
+    </div>
+    <div class="right-column">
+      <div class="user_card">
+        <div class="card_header">
+          <p>Личная карточка</p>
+          <button class="save_btn" onclick="updateProfile()">Сохранить</button>
+        </div>
+        <hr>
+        <div class="card_body">
+          <label for="inputName">Имя</label>
+          <input type="text" id="inputName" class="info_input">
+          <label for="inputSurname">Фамилия</label>
+          <input type="text" id="inputSurname" class="info_input_third">
+          <label for="inputProfession">Профессия</label>
+          <input type="text" id="inputProfession" class="info_input_second">
+          <label for="inputOrganization">Организация</label>
+          <input type="text" id="inputOrganization" class="info_input_second">
+        </div>
+      </div>
+    </div>
+    </article>
+ 
+</body>
+</html>
