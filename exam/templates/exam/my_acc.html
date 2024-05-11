@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Профиль</title>
-    <link rel="icon" href="/icons/logo1.svg">
-    <link rel="stylesheet" href="/styles/my_acc.css">
-    <script src="/scripts/my_acc.js" defer></script>
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/my_acc.css' %}">
+    <script src="{% static 'exam/js/my_acc.js' %}" defer></script>
 </head>
 <body>
     <header class="header">
       <div class="title-form">
           <img 
-          src="/icons/logo.svg" 
+          src="{% static 'exam/icons/logo.svg' %}"
           alt="logo" 
           class="header-logo-image"
           width="61" height="50" loading="lazy"
@@ -22,13 +23,13 @@
         <nav class="header-menu">
             <ul class="header-menu-list">
               <li class="header-menu-item">
-                <a class="header-menu-link" href="/">Мои авторы</a>
+                <a class="header-menu-link" href="/my_authors">Мои авторы</a>
               </li>
               <li class="header-menu-item">
-                <a class="header-menu-link" href="/">Мои тесты</a>
+                <a class="header-menu-link" href="/my_tests">Мои тесты</a>
               </li>
               <li class="header-menu-item">
-                <a class="header-menu-link is-current" href="/">Аккаунт</a>
+                <a class="header-menu-link is-current" href="/my_acc">Аккаунт</a>
               </li>
               <li class="header-menu-item">
             </ul>
@@ -44,7 +45,7 @@
     <article>
       <div class="left-column">
         <div class="avatar-frame">
-          <img src="/icons/Ellipse 1.svg" alt="Avatar">
+            <img src="{% static 'exam/icons/Ellipse 1.svg' %}" alt="Avatar">
         </div>
           <p id="name" class="name"></p>
           <p id="profession"></p>

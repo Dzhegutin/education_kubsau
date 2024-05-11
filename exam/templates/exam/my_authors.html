@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторы</title>
-    <link rel="icon" href="/icons/logo1.svg">
-    <link rel="stylesheet" href="/styles/my_authors.css">
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/my_authors.css' %}">
 </head>
 <body>
     <header class="header">
         <div class="title-form">
             <img 
-            src="/icons/logo.svg" 
+            src="{% static 'exam/icons/logo.svg' %}"
             alt="logo" 
             class="header-logo-image"
             width="61" height="50" loading="lazy"
@@ -21,13 +22,13 @@
           <nav class="header-menu">
               <ul class="header-menu-list">
                 <li class="header-menu-item">
-                  <a class="header-menu-link is-current" href="/">Мои авторы</a>
+                  <a class="header-menu-link is-current" href="/my_authors">Мои авторы</a>
                 </li>
                 <li class="header-menu-item">
-                  <a class="header-menu-link" href="/">Мои тесты</a>
+                  <a class="header-menu-link" href="/my_tests">Мои тесты</a>
                 </li>
                 <li class="header-menu-item">
-                  <a class="header-menu-link" href="/">Аккаунт</a>
+                  <a class="header-menu-link" href="/my_acc">Аккаунт</a>
                 </li>
                 <li class="header-menu-item">
               </ul>

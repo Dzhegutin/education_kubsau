@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/login.css">
-    <script src="/scripts/login.js" defer></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'exam/css/login.css' %}">
+    <script src="{% static 'exam/js/login.js' %}" defer></script>
     <title>Авторизируйся!</title>
-    <link rel="icon" href="/icons/logo1.svg">
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
 </head>
 <body>
   <article class="container">
