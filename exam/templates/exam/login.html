@@ -8,56 +8,98 @@
     <script src="{% static 'exam/js/login.js' %}" defer></script>
     <title>Авторизируйся!</title>
     <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <style>
+        .error-message {
+            color: red;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
   <article class="container">
-    <div class="block">
-      <section class="block_item block-item">
-        <h2 class="block-item_title">У вас уже есть аккаунт?</h2>
-        <button class="block-item_btn signin-btn">Войти</button>
-      </section>
-      <section class="block_item block-item">
-        <h2 class="block-item_title">У вас не аккаунта?</h2>
-        <button class="block-item_btn signup-btn">Зарегистрироваться</button>
-      </section>
-    </div>
-    <div class="form-box">
-      <form action="#" class="form form_signin">
-        <h3 class="form_title">Вход</h3>
-        <p>
-          <input type="text" class="form_input" placeholder="Логин">
-        </p>
-        <p>
-          <input type="password" class="form_input" placeholder="Пароль">
-        </p>
-        <p>
-          <button class="form_btn">Войти</button>
-        </p>
-        <p>
-          <a href="" class="form_forgot">Забыли пароль?</a>
-        </p>
-      </form>
+<div class="block">
+  <section class="block_item block-item">
+    <h2 class="block-item_title">У вас уже есть аккаунт?</h2>
+    <button class="block-item_btn signin-btn">Войти</button>
+  </section>
+  <section class="block_item block-item">
+    <h2 class="block-item_title">У вас нет аккаунта?</h2>
+    <button class="block-item_btn signup-btn {% if form.errors %}active{% endif %}">Зарегистрироваться</button>
+  </section>
+</div>
+<div class="form-box {% if form.errors %}active{% endif %}">
+<form action="{% url 'my_login' %}" method="post" class="form form_signin">
+    {% csrf_token %}
+    <h3 class="form_title">Вход</h3>
+    <p>
+        <input type="text" name="username" class="form_input" placeholder="Логин" required>
+    </p>
+    <p>
+        <input type="password" name="password" class="form_input" placeholder="Пароль" required>
+        {% if error_message %}
+    <p class="error-message">{{ error_message }}</p>
+{% endif %}
+    </p>
+    <p>
+        <button type="submit" class="form_btn">Войти</button>
+    </p>
+    <p>
+        <a href="" class="form_forgot">Забыли пароль?</a>
+    </p>
+</form>
 
-      <form action="#" class="form form_signup">
-        <h3 class="form_title">Регистрация</h3>
+
+
+  <form action="{% url 'registration' %}" method="post" class="form form_signup">
+    {% csrf_token %}
+    <h3 class="form_title">Регистрация</h3>
         <p>
-          <input type="text" class="form_input" placeholder="Логин">
+          <input type="text" name="username" class="form_input" placeholder="Логин" required>
+          {% if form.username.errors %}
+              <span class="error-message">{{ form.username.errors }}</span>
+          {% endif %}
         </p>
         <p>
-          <input type="email" class="form_input" placeholder="Email">
+          <input type="email" name="email" class="form_input" placeholder="Email" required>
+          {% if form.email.errors %}
+              <span class="error-message">{{ form.email.errors }}</span>
+          {% endif %}
         </p>
         <p>
-          <input type="password" class="form_input" placeholder="Пароль">
+          <input type="text" name="organization" class="form_input" placeholder="Организация" required>
+          {% if form.organization.errors %}
+              <span class="error-message">{{ form.organization.errors }}</span>
+          {% endif %}
         </p>
         <p>
-          <input type="password" class="form_input" placeholder="Подтвердить пароль">
+          <input type="text" name="profession" class="form_input" placeholder="Профессия" required>
+          {% if form.profession.errors %}
+              <span class="error-message">{{ form.profession.errors }}</span>
+          {% endif %}
         </p>
         <p>
-          <button onclick="" class="form_btn from_btn_signup">Зарегистрироваться</button>
+          <input type="password" name="password1" class="form_input" placeholder="Пароль" required>
+          {% if form.password1.errors %}
+              <span class="error-message">{{ form.password1.errors }}</span>
+          {% endif %}
         </p>
+        <p>
+          <input type="password" name="password2" class="form_input" placeholder="Подтвердить пароль" required>
+          {% if form.password2.errors %}
+              <span class="error-message">{{ form.password2.errors }}</span>
+          {% endif %}
+        </p>
+        <p>
+          <button type="submit" class="form_btn from_btn_signup">Зарегистрироваться</button>
+        </p>
+        {% if form.non_field_errors %}
+          <p class="error-message">{{ form.non_field_errors }}</p>
+        {% endif %}
       </form>
     </div>
-
   </article>
 </body>
 </html>

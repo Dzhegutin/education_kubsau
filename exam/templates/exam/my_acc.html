@@ -45,30 +45,37 @@
     <article>
       <div class="left-column">
         <div class="avatar-frame">
-            <img src="{% static 'exam/icons/Ellipse 1.svg' %}" alt="Avatar">
+        <img src="{{ user.photo.url }}" alt="Avatar">
+
         </div>
           <p id="name" class="name"></p>
           <p id="profession"></p>
           <p id="organization"></p>
-        <input type="file" id="avatar-upload" accept="image/*">
-        <label for="avatar-upload" class="download_btn">Загрузить аватар</label>
+<form id="avatar-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" id="avatar-upload" name="avatar" accept="image/*">
+    <label for="avatar-upload" class="download_btn">Загрузить аватар</label>
+</form>
     </div>
     <div class="right-column">
       <div class="user_card">
         <div class="card_header">
           <p>Личная карточка</p>
-          <button class="save_btn" onclick="updateProfile()">Сохранить</button>
         </div>
         <hr>
         <div class="card_body">
-          <label for="inputName">Имя</label>
-          <input type="text" id="inputName" class="info_input">
-          <label for="inputSurname">Фамилия</label>
-          <input type="text" id="inputSurname" class="info_input_third">
-          <label for="inputProfession">Профессия</label>
-          <input type="text" id="inputProfession" class="info_input_second">
-          <label for="inputOrganization">Организация</label>
-          <input type="text" id="inputOrganization" class="info_input_second">
+<form id="profile-form" method="post">
+    {% csrf_token %}
+    <label for="inputName">Имя</label>
+    <input type="text" id="inputName" name="first_name" class="info_input" value="{{ user.first_name }}">
+    <label for="inputSurname">Фамилия</label>
+    <input type="text" id="inputSurname" name="last_name" class="info_input_third" value="{{ user.last_name }}">
+    <label for="inputProfession">Профессия</label>
+    <input type="text" id="inputProfession" name="profession" class="info_input_second" value="{{ user.profession }}">
+    <label for="inputOrganization">Организация</label>
+    <input type="text" id="inputOrganization" name="organization" class="info_input_second" value="{{ user.organization }}">
+    <button class="save_btn" type="submit" id="save-profile-btn">Сохранить</button>
+</form>
         </div>
       </div>
     </div>

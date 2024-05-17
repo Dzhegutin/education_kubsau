@@ -119,7 +119,6 @@ body.active {
 .form_title{
     font-size: 1.5rem;
     font-weight: 500;
-    color:#F7F6F6;
 }
 
 .form_input{
@@ -129,6 +128,7 @@ body.active {
     font-size: inherit;
     background-color: rgba(0, 0, 0, 0);
     border-radius: 5px;
+
 }
 
 .form_btn{
@@ -202,4 +202,16 @@ body.active {
         left: 0;
     }
 
+}
+.form_input, .form_title, .form_btn, .form_forgot {
+    color: #FFF;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.active {
+  display: block;
 }

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тесты</title>
-        {% load static %}
+    {% load static %}
     <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
     <link rel="stylesheet" href="{% static 'exam/css/my_tests.css' %}">
 </head>
 <body>
     <header class="header">
         <div class="title-form">
-            <img 
+            <img
             src="{% static 'exam/icons/logo.svg' %}"
-            alt="logo" 
+            alt="logo"
             class="header-logo-image"
             width="61" height="50" loading="lazy"
             />
@@ -34,13 +34,29 @@
               </ul>
           </nav>
           <div class="search_block">
-            <form> 
+            <form>
               <input type="search" name="text" class="search" placeholder="Введите автора или тему">
               <input type="submit" name="submit" class="submit" value="">
             </form>
           </div>
-          
       </header>
-    
+
+    <main class="main-content">
+        <section class="tests-section">
+            <div class="tests-header">
+                <h1>Мои тесты</h1>
+                <a href="/create_test" class="create-test-button">Создать новый тест</a>
+            </div>
+            <div class="tests-list">
+                <!-- Пример блока теста -->
+                <div class="test-block">
+                    <h2>Название теста</h2>
+                    <p>Краткое описание теста. Здесь может быть дополнительная информация.</p>
+                    <a href="/test_detail/1" class="test-detail-link">Подробнее</a>
+                </div>
+                <!-- Добавьте сюда другие блоки тестов по аналогии -->
+            </div>
+        </section>
+    </main>
 </body>
 </html>

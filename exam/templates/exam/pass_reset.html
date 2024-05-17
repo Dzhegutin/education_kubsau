@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сброс пароля</title>
+    {% load static %}
+   <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/pass_reset.css' %}">
+</head>
+<body>
+    <div class="reset">
+        <h1>Создать Новый Пароль</h1>
+        <p>Впишите свой новый пароль. Он должен содержать следующее:</p>
+        <ol>
+            <li>Минимум одну цифру или символ</li>
+            <li>Заглавные и строчные буквы</li>
+            <li>Миниму 8 символов</li>
+        </ol>
+        <div>
+            <input type="text" class="firstInput" placeholder="Пароль" >
+            <input type="text" class="secondInput" placeholder="Подтвердите пароль" >
+        </div>
+        <button class="send">Сохранить изменения</button>
+    </div>
+</body>
+</html>

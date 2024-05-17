@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -74,10 +74,20 @@ WSGI_APPLICATION = 'exampro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+from pathlib import Path
+from environs import Env
+
+env = Env()
+env.read_env()
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env.str('PG_NAME'),
+        'USER': env.str('PG_USER'),
+        'PASSWORD': env.str('PG_PASSWORD'),
+        'HOST': env.str('PG_HOST', default='localhost'),
+        'PORT': env.str('PG_PORT', default=5432),
     }
 }
 
@@ -112,6 +122,7 @@ USE_I18N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL = 'exam.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -123,6 +134,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATICFILES_DIRS = [
     BASE_DIR / 'exam' / 'static',
 ]
+MEDIA_ROOT = BASE_DIR / 'media'
+
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

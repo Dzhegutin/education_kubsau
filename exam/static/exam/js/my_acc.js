@@ -1,27 +1,98 @@
-function updateProfile() { 
-  var name = document.getElementById("inputName").value; 
-  var surname = document.getElementById("inputSurname").value; 
-  var profession = document.getElementById("inputProfession").value; 
-  var organization = document.getElementById("inputOrganization").value; 
-  
-  var fullName = name + " " + surname; 
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('profile-form');
+    const saveBtn = document.getElementById('save-profile-btn');
 
-  document.getElementById("name").innerText = fullName; 
-  document.getElementById("profession").innerText =  profession; 
-  document.getElementById("organization").innerText =  organization; 
-}
+    saveBtn.addEventListener('click', function(event) {
+        event.preventDefault();
 
-/* Выше это функция кнопик сохранить чтобы то что я ввожу и сохраняю в инпут отображалось под аватаркой
-Снизу просто базовая функиця загрузки*/
+        const formData = new FormData(form);
 
-document.getElementById('avatar-upload').addEventListener('change', function(event) {
-    var file = event.target.files[0];
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-      document.querySelector('.avatar-frame img').src = e.target.result;
+        fetch('/update_profile/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Профиль успешно обновлен!');
+                // Дополнительные действия после успешного обновления профиля
+            } else {
+                alert('Ошибка при обновлении профиля.');
+            }
+        })
+        .catch(error => {
+            console.error('Произошла ошибка:', error);
+            alert('Произошла ошибка при обновлении профиля.');
+        });
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
     }
-    
-    reader.readAsDataURL(file);
-  });
+});
 
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('avatar-form');
+    const input = document.getElementById('avatar-upload');
+
+    input.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        const formData = new FormData();
+        formData.append('avatar', file);
+
+        fetch('/update_avatar/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                alert('Аватар успешно обновлен!');
+                // Можно выполнить дополнительные действия после успешного обновления аватара
+            } else {
+                alert('Ошибка при обновлении аватара.');
+            }
+        })
+        .catch(error => {
+            console.error('Произошла ошибка:', error);
+            alert('Произошла ошибка при обновлении аватара.');
+        });
+    });
+
+    // Функция для получения значения CSRF-токена из куки
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Ищем куки с указанным именем
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
