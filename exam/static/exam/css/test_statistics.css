@@ -1,0 +1,130 @@
+/* Основные стили для страницы статистики тестов */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.title-form {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-logo-image {
+    margin-right: 10px;
+}
+
+.header-menu {
+    display: flex;
+}
+
+.header-menu-list {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-menu-item {
+    margin-right: 20px;
+}
+
+.header-menu-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.header-menu-link:hover {
+    color: #007bff;
+}
+
+.is-current {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.statistics-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.statistics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.statistics-header h1 {
+    margin: 0;
+}
+
+.back-to-tests-button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.back-to-tests-button:hover {
+    background-color: #0056b3;
+}
+
+.statistics-summary p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.user-statistics {
+    margin-top: 20px;
+}
+
+.user-statistics h2 {
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}

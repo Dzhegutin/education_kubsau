@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser
@@ -41,16 +43,8 @@ class UserAnswer(models.Model):
     user_response = models.TextField()
     is_correct = models.BooleanField()
     timestamp = models.DateTimeField()
+    session_key = models.UUIDField(default=uuid.uuid4, editable=False)
 
     def __str__(self):
         return f'{self.user.username} - {self.task.task_content}'
 
-
-
-class LikeAnswer(models.Model):
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    tagging = models.TextField()
-
-    def __str__(self):
-        return f'{self.user.username} likes {self.task.id}'

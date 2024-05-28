@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика теста: {{ test_name }}</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/test_statistics.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="title-form">
+            <img src="{% static 'exam/icons/logo.svg' %}" alt="logo" class="header-logo-image" width="61" height="50" loading="lazy" />
+            ExamPro
+        </div>
+        <nav class="header-menu">
+            <ul class="header-menu-list">
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/my_authors">Мои авторы</a>
+                </li>
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/my_tests">Мои тесты</a>
+                </li>
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/account">Аккаунт</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="statistics-section">
+            <div class="statistics-header">
+                <h1>Статистика теста: {{ test_name }}</h1>
+                <a href="/my_tests" class="back-to-tests-button">Вернуться к тестам</a>
+            </div>
+            <div class="statistics-summary">
+                <p>Всего решено заданий: {{ total_attempts }}</p>
+                <p>Правильных решений: {{ correct_attempts }}</p>
+                <p>Процент правильных решений: {{ correct_percentage }}%</p>
+            </div>
+            <div class="user-statistics">
+                <h2>Статистика по пользователям:</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>№</th>
+                            <th>Пользователь</th>
+                            <th>Всего ответов</th>
+                            <th>Правильных ответов</th>
+                            <th>Процент правильных ответов</th>
+                            <th>Время прохождения</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stat in user_stats %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ stat.user__username }}</td>
+                                <td>{{ stat.total }}</td>
+                                <td>{{ stat.correct }}</td>
+                                <td>{{ stat.correct_percentage|floatformat:2 }}%</td>
+                                <td>{{ stat.last_attempt_time|date:"Y-m-d H:i:s" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

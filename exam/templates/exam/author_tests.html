@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тесты автора</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/author_tests.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="title-form">
+            <img
+            src="{% static 'exam/icons/logo.svg' %}"
+            alt="logo"
+            class="header-logo-image"
+            width="61" height="50" loading="lazy"
+            />
+            ExamPro
+        </div>
+        <nav class="header-menu">
+            <ul class="header-menu-list">
+                <li class="header-menu-item">
+                    <a class="header-menu-link is-current" href="/my_authors">Мои авторы</a>
+                </li>
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/my_tests">Мои тесты</a>
+                </li>
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/account">Аккаунт</a>
+                </li>
+            </ul>
+        </nav>
+<!--        <div class="search_block">-->
+<!--            <form>-->
+<!--                <input type="search" name="text" class="search" placeholder="Введите автора или тему">-->
+<!--                <input type="submit" name="submit" class="submit" value="">-->
+<!--            </form>-->
+<!--        </div>-->
+    </header>
+
+<main class="main-content">
+    <div class="container">
+        <div class="title-banner">
+            <h1 class="page-title">Тесты от {{ author.username }}</h1>
+        </div>
+        <div class="tasks-list">
+            {% for task_group in grouped_tasks %}
+                <div class="task-group">
+                    <h2>{{ task_group.task_name }}</h2>
+                    <p>Количество заданий: {{ task_group.task_count }}</p>
+                    <a href="{% url 'take_test' task_group.task_name %}" class="take-test-button">Пройти</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

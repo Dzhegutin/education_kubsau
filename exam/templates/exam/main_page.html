@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обучайся с нами</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'exam/css/main_page.css' %}">
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <script>
+        function redirectToAuth() {
+            window.location.href = "{% url 'auth' %}";
+        }
+    </script>
+</head>
+<body>
+    <div class="firstFrame">
+        <header class="header">
+            <div class="title-form">
+                <img
+                src="{% static 'exam/icons/logo1.svg' %}"
+                alt="logo"
+                class="header-logo-image"
+                width="61" height="50" loading="lazy"
+                />
+                ExamPro
+            </div>
+            <div class="search_block">
+                <button class="acc" onclick="redirectToAuth()">Аккаунт</button>
+            </div>
+        </header>
+        <div class="first_block">
+            <h1>Подготовься к экзаменам</h1>
+            <p>Интерактивная помощь студентам</p>
+            <button class="start" onclick="redirectToAuth()">Начать обучение</button>
+        </div>
+    </div>
+    <div class="second_block">
+        <h1>Начни сейчас</h1>
+        <h1 class="inline">1</h1>
+        <p class="inline">Выбери предмет и отправься в интерактивное обучение</p>
+        <br>
+        <hr>
+        <h1 class="inline">2</h1>
+        <p class="inline">Проверь свои знания отвечая на тщательно подобранные вопросы</p>
+        <br>
+        <hr>
+        <h1 class="inline">3</h1>
+        <p class="inline">Получи мгновенное объяснение, если ответ был неверен</p>
+        <br>
+        <hr>
+    </div>
+    <div class="third_block">
+        <h2>Наша цель</h2>
+        <div class="banner">
+            <p class="text">Мы стремимся улучшить обучение с помощью викторин и мгновенной обратной связи, обеспечивая понимание и запоминание.</p>
+        </div>
+    </div>
+    <div class="fourth_block">
+        <div class="last_bunner">
+            <div class="content">
+                <h1>Прими вызов</h1>
+                <p>Испытывай себя и отслеживай свой прогресс</p>
+                <button class="try" onclick="redirectToAuth()">Попробовать сейчас</button>
+                <button class="learn_more" onclick="redirectToAuth()">Узнать больше</button>
+            </div>
+            <img class="pic" src="{% static 'exam/icons/Image  --lummi (1).svg' %}" alt="pic1">
+        </div>
+    </div>
+</body>
+</html>

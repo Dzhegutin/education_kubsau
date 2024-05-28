@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование теста</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'exam/css/edit_test.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>Редактирование теста: {{ tasks.first.task_name }}</h1>
+        <a href="{% url 'my_tests' %}" class="back-button">Назад к списку тестов</a>
+    </header>
+
+    <main class="main-content">
+        <form id="edit-test-form" method="POST">
+            {% csrf_token %}
+            <div class="test-details">
+                <div class="detail">
+                    <label for="subject">Предмет:</label>
+                    <input type="text" id="subject" name="subject" value="{{ tasks.first.subject }}" readonly>
+                </div>
+                <div class="detail">
+                    <label for="task_author">Автор:</label>
+                    <input type="text" id="task_author" name="task_author" value="{{ tasks.first.task_author }}" readonly>
+                </div>
+                <div class="detail">
+                    <label for="task_name">Название теста:</label>
+                    <input type="text" id="task_name" name="task_name" value="{{ tasks.first.task_name }}" readonly>
+                </div>
+            </div>
+
+            <div class="tasks-list">
+                {% for task in tasks %}
+                <div class="task-block">
+                    <h2>Задание {{ forloop.counter }}</h2>
+                    <div class="form-group">
+                        <label for="task_content_{{ task.id }}">Вопрос:</label>
+                        <textarea id="task_content_{{ task.id }}" name="task_content_{{ task.id }}" required>{{ task.task_content }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="correct_answer_{{ task.id }}">Правильный ответ:</label>
+                        <textarea id="correct_answer_{{ task.id }}" name="correct_answer_{{ task.id }}" required>{{ task.correct_answer }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="wrong_1_{{ task.id }}">Неправильный ответ 1:</label>
+                        <textarea id="wrong_1_{{ task.id }}" name="wrong_1_{{ task.id }}" required>{{ task.wrong_1 }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="wrong_2_{{ task.id }}">Неправильный ответ 2:</label>
+                        <textarea id="wrong_2_{{ task.id }}" name="wrong_2_{{ task.id }}" required>{{ task.wrong_2 }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="wrong_3_{{ task.id }}">Неправильный ответ 3:</label>
+                        <textarea id="wrong_3_{{ task.id }}" name="wrong_3_{{ task.id }}" required>{{ task.wrong_3 }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="task_hint_{{ task.id }}">Подсказка:</label>
+                        <textarea id="task_hint_{{ task.id }}" name="task_hint_{{ task.id }}">{{ task.task_hint }}</textarea>
+                    </div>
+                    <button type="submit" name="delete_task_{{ task.id }}" class="delete-task-button">Удалить</button>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" name="apply_changes" class="apply-changes-button">Применить</button>
+                <button type="submit" name="delete" class="delete-button">Удалить все</button>
+                <button type="submit" name="add" class="add-button">Добавить задание</button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('edit-test-form').addEventListener('submit', function(event) {
+            const tasks = document.querySelectorAll('.task-block');
+            for (let task of tasks) {
+                const taskContent = task.querySelector('textarea[name^="task_content_"]').value.trim();
+                const correctAnswer = task.querySelector('textarea[name^="correct_answer_"]').value.trim();
+                const wrong1 = task.querySelector('textarea[name^="wrong_1_"]').value.trim();
+                const wrong2 = task.querySelector('textarea[name^="wrong_2_"]').value.trim();
+                const wrong3 = task.querySelector('textarea[name^="wrong_3_"]').value.trim();
+
+                if (!taskContent || !correctAnswer || !wrong1 || !wrong2 || !wrong3) {
+                    alert('Пожалуйста, заполните все обязательные поля для каждого задания.');
+                    event.preventDefault();
+                    return;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

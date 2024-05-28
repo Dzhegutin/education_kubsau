@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Профиль{% endblock %}</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/take_test.css' %}">
+    <script src="{% static 'exam/js/my_acc.js' %}" defer></script>
+</head>
+<body>
+    <header class="header">
+      <div class="title-form">
+          <img
+          src="{% static 'exam/icons/logo.svg' %}"
+          alt="logo"
+          class="header-logo-image"
+          width="61" height="50" loading="lazy"
+          />
+          ExamPro
+      </div>
+        <nav class="header-menu">
+            <ul class="header-menu-list">
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/my_authors">Мои авторы</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/my_tests">Мои тесты</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/account">Аккаунт</a>
+              </li>
+              <li class="header-menu-item">
+            </ul>
+        </nav>
+        </header>
+<!--        <div class="search_block">-->
+<!--            <form>-->
+<!--                <input type="search" name="text" class="search" placeholder="Введите автора или тему">-->
+<!--                <input type="submit" name="submit" class="submit" value="">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </header>-->
+
+    <article>
+        <div class="container">
+            {% block content %}
+            <main class="main-content">
+                <div class="container">
+                    <div class="title-banner">
+                        <h1 class="page-title">Прохождение теста: {{ task_name }}</h1>
+                    </div>
+                </div>
+<div class="test-container">
+    <form method="post" id="test-form">
+        {% csrf_token %}
+        <div class="tasks-list">
+            {% for task in tasks %}
+                <div class="task-group" id="task-{{ task.id }}" style="{% if not forloop.first %}display: none;{% endif %}">
+                    <h2>{{ task.task_content }}</h2>
+                    <div class="options">
+                        {% for option in task.shuffled_options %}
+                            <button type="button" class="option-button" onclick="selectOption(this, {{ task.id }})">
+                                {{ option }}
+                            </button>
+                        {% endfor %}
+                    </div>
+                    <input type="hidden" name="task_{{ task.id }}" id="task_{{ task.id }}_response">
+                    <div class="task-hint" style="display: none;">
+                        <p>Подсказка: {{ task.task_hint }}</p>
+                    </div>
+                    <button type="button" class="hint-button" onclick="toggleHint(this)">Посмотреть подсказку</button>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="pagination-buttons">
+            <button type="button" id="prev-button" onclick="showPrevTask()">Назад</button>
+            <button type="button" id="next-button" onclick="showNextTask()">Вперед</button>
+        </div>
+        <div class="submit-button">
+            <button type="submit">Отправить ответы</button>
+        </div>
+    </form>
+</div>
+            </main>
+            {% endblock %}
+        </div>
+    </article>
+
+    <script>
+        let currentTask = 0;
+        const tasks = document.querySelectorAll('.task-group');
+        const totalTasks = tasks.length;
+
+        function showTask(index) {
+            tasks.forEach((task, i) => {
+                task.style.display = (i === index) ? 'block' : 'none';
+            });
+            document.getElementById('prev-button').style.display = (index === 0) ? 'none' : 'inline-block';
+            document.getElementById('next-button').style.display = (index === totalTasks - 1) ? 'none' : 'inline-block';
+        }
+
+        function showNextTask() {
+            if (currentTask < totalTasks - 1) {
+                currentTask++;
+                showTask(currentTask);
+            }
+        }
+
+        function showPrevTask() {
+            if (currentTask > 0) {
+                currentTask--;
+                showTask(currentTask);
+            }
+        }
+
+    function selectOption(button, taskId) {
+        const selectedButtons = document.querySelectorAll('.task-group .option-button.selected');
+        selectedButtons.forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+        const responseInput = document.getElementById(`task_${taskId}_response`);
+        responseInput.value = button.textContent.trim();
+    }
+
+        function toggleHint(button) {
+            const hint = button.previousElementSibling;
+            hint.style.display = (hint.style.display === 'none') ? 'block' : 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showTask(currentTask);
+        });
+    </script>
+</body>
+</html>

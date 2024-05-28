@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Успешная авторизация</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/success_auth.css' %}">
+</head>
+<body>
+    <main class="main-content">
+        <div class="container">
+            <div class="success-banner">
+                <h1 class="page-title">Регистрация успешна!</h1>
+                <p>Теперь вы можете выполнить вход.</p>
+                 <a href="{% url 'auth' %}" class="login-button">Выполнить вход</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

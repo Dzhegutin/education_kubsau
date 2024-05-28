@@ -10,36 +10,37 @@
 </head>
 <body>
     <header class="header">
-        <div class="title-form">
-            <img
-            src="{% static 'exam/icons/logo.svg' %}"
-            alt="logo"
-            class="header-logo-image"
-            width="61" height="50" loading="lazy"
-            />
-            ExamPro
-        </div>
-          <nav class="header-menu">
-              <ul class="header-menu-list">
-                <li class="header-menu-item">
-                  <a class="header-menu-link" href="/my_authors">Мои авторы</a>
-                </li>
-                <li class="header-menu-item">
-                  <a class="header-menu-link is-current" href="/my_tests">Мои тесты</a>
-                </li>
-                <li class="header-menu-item">
-                  <a class="header-menu-link" href="/my_acc">Аккаунт</a>
-                </li>
-                <li class="header-menu-item">
-              </ul>
-          </nav>
-          <div class="search_block">
-            <form>
-              <input type="search" name="text" class="search" placeholder="Введите автора или тему">
-              <input type="submit" name="submit" class="submit" value="">
-            </form>
-          </div>
-      </header>
+      <div class="title-form">
+          <img
+          src="{% static 'exam/icons/logo.svg' %}"
+          alt="logo"
+          class="header-logo-image"
+          width="61" height="50" loading="lazy"
+          />
+          ExamPro
+      </div>
+        <nav class="header-menu">
+            <ul class="header-menu-list">
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/my_authors">Мои авторы</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link is-current" href="/my_tests">Мои тесты</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/account">Аккаунт</a>
+              </li>
+              <li class="header-menu-item">
+            </ul>
+        </nav>
+        </header>
+<!--        <div class="search_block">-->
+<!--            <form>-->
+<!--                <input type="search" name="text" class="search" placeholder="Введите автора или тему">-->
+<!--                <input type="submit" name="submit" class="submit" value="">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </header>-->
 
     <main class="main-content">
         <section class="tests-section">
@@ -48,13 +49,18 @@
                 <a href="/create_test" class="create-test-button">Создать новый тест</a>
             </div>
             <div class="tests-list">
-                <!-- Пример блока теста -->
-                <div class="test-block">
-                    <h2>Название теста</h2>
-                    <p>Краткое описание теста. Здесь может быть дополнительная информация.</p>
-                    <a href="/test_detail/1" class="test-detail-link">Подробнее</a>
-                </div>
-                <!-- Добавьте сюда другие блоки тестов по аналогии -->
+                {% for test in test_info %}
+                    <div class="test-block">
+                        <h2>{{ test.test_name }}</h2>
+                        <p>Предмет: {{ test.subject_name }}</p>
+                        <p>Количество вопросов: {{ test.question_count }}</p>
+                        <a href="/edit_test/{{ test.test_name }}" class="edit-test-link">Редактировать</a>
+
+                        <a href="/test_statistics/{{ test.test_name }}" class="statistics-test-link">Посмотреть статистику</a>
+                        <br>
+
+                    </div>
+                {% endfor %}
             </div>
         </section>
     </main>

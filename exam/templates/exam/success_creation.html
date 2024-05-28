@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест успешно создан</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/success_creation.css' %}">
+</head>
+<body>
+    <main class="main-content">
+        <div class="container">
+            <div class="success-banner">
+                <h1 class="page-title">Тест успешно создан!</h1>
+                <p>Ваш тест был успешно создан и сохранен.</p>
+                <a href="{% url 'my_tests' %}" class="login-button">Перейти к моим тестам</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -10,37 +10,61 @@
 </head>
 <body>
     <header class="header">
-        <div class="title-form">
-            <img
-            src="{% static 'exam/icons/logo.svg' %}"
-            alt="logo"
-            class="header-logo-image"
-            width="61" height="50" loading="lazy"
-            />
-            ExamPro
+      <div class="title-form">
+          <img
+          src="{% static 'exam/icons/logo.svg' %}"
+          alt="logo"
+          class="header-logo-image"
+          width="61" height="50" loading="lazy"
+          />
+          ExamPro
+      </div>
+        <nav class="header-menu">
+            <ul class="header-menu-list">
+              <li class="header-menu-item">
+                <a class="header-menu-link is-current" href="/my_authors">Мои авторы</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/my_tests">Мои тесты</a>
+              </li>
+              <li class="header-menu-item">
+                <a class="header-menu-link" href="/account">Аккаунт</a>
+              </li>
+              <li class="header-menu-item">
+            </ul>
+        </nav>
+        </header>
+<!--        <div class="search_block">-->
+<!--            <form>-->
+<!--                <input type="search" name="text" class="search" placeholder="Введите автора или тему">-->
+<!--                <input type="submit" name="submit" class="submit" value="">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </header>-->
+    <main class="main-content">
+        <div class="container">
+            <div class="title-banner">
+                <h1 class="page-title ">Список авторов</h1>
+            </div>
+            <div class="authors-list">
+                {% for author in authors %}
+                    <div class="author-card">
+                        {% if author.photo %}
+                            <img src="{{ author.photo.url }}" alt="{{ author.username }}" class="author-photo">
+                        {% else %}
+                            <img src="{% static 'exam/icons/Ellipse 1.svg' %}" alt="{{ author.username }}" class="author-photo">
+                        {% endif %}
+                        <h2>{{ author.username }}</h2>
+                        <p>{{ author.organization }}</p>
+                        <p>{{ author.profession }}</p>
+            <a href="{% url 'author_tests' author.username %}" class="view-tests-button">Просмотреть тесты</a>
+
+
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-          <nav class="header-menu">
-              <ul class="header-menu-list">
-                <li class="header-menu-item">
-                  <a class="header-menu-link is-current" href="/my_authors">Мои авторы</a>
-                </li>
-                <li class="header-menu-item">
-                  <a class="header-menu-link" href="/my_tests">Мои тесты</a>
-                </li>
-                <li class="header-menu-item">
-                  <a class="header-menu-link" href="/my_acc">Аккаунт</a>
-                </li>
-                <li class="header-menu-item">
-              </ul>
-          </nav>
-          <div class="search_block">
-            <form>
-              <input type="search" name="text" class="search" placeholder="Введите автора или тему">
-              <input type="submit" name="submit" class="submit" value="">
-            </form>
-          </div>
-
-      </header>
-
+    </main>
 </body>
 </html>
+

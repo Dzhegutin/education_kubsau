@@ -29,23 +29,28 @@
                 <a class="header-menu-link" href="/my_tests">Мои тесты</a>
               </li>
               <li class="header-menu-item">
-                <a class="header-menu-link is-current" href="/my_acc">Аккаунт</a>
+                <a class="header-menu-link is-current" href="/account">Аккаунт</a>
               </li>
               <li class="header-menu-item">
             </ul>
         </nav>
-        <div class="search_block">
-          <form> 
-            <input type="search" name="text" class="search" placeholder="Введите автора или тему">
-            <input type="submit" name="submit" class="submit" value="">
-          </form>
-        </div>
+        </header>
+<!--        <div class="search_block">-->
+<!--          <form> -->
+<!--            <input type="search" name="text" class="search" placeholder="Введите автора или тему">-->
+<!--            <input type="submit" name="submit" class="submit" value="">-->
+<!--          </form>-->
+<!--        </div>-->
         
-    </header>
+<!--    </header>-->
     <article>
       <div class="left-column">
         <div class="avatar-frame">
+    {% if user.photo %}
         <img src="{{ user.photo.url }}" alt="Avatar">
+    {% else %}
+   <img src="{% static 'exam/icons/Ellipse 1.svg' %}" alt="Default Avatar">
+    {% endif %}
 
         </div>
           <p id="name" class="name"></p>
@@ -80,6 +85,6 @@
       </div>
     </div>
     </article>
- 
+
 </body>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат теста</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'exam/icons/logo1.svg' %}">
+    <link rel="stylesheet" href="{% static 'exam/css/test_results.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="title-form">
+            <img src="{% static 'exam/icons/logo.svg' %}" alt="logo" class="header-logo-image" width="61" height="50" loading="lazy" />
+            ExamPro
+        </div>
+        <nav class="header-menu">
+            <ul class="header-menu-list">
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/my_authors">Мои авторы</a>
+                </li>
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/my_tests">Мои тесты</a>
+                </li>
+                <li class="header-menu-item">
+                    <a class="header-menu-link" href="/my_acc">Аккаунт</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <div class="title-banner">
+                <h1 class="page-title">Результаты теста: {{ task_name }}</h1>
+            </div>
+            <div class="results-summary">
+                <p>Правильных ответов: {{ correct_count }} из {{ total_count }}</p>
+                <p>Ваш результат: {{ score|floatformat:1 }}%</p>
+
+            </div>
+            <div class="user-answers">
+                <h2>Ваши ответы:</h2>
+                <ul>
+                    {% for answer in user_answers %}
+                        <li>
+                            <p>Вопрос: {{ answer.task.task_content }}</p>
+                            <p>Ваш ответ: {{ answer.user_response }}</p>
+                            <p>Правильный ответ: {{ answer.task.correct_answer }}</p>
+                            <p>Статус: {{ answer.is_correct|yesno:"Правильно,Неправильно" }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

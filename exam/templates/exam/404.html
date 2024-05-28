@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'exam/css/404.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="title-form">
+            <img src="{% static 'exam/icons/logo.svg' %}" alt="logo" class="header-logo-image" width="61" height="50" loading="lazy" />
+            ExamPro
+        </div>
+    </header>
+    <main class="main-content">
+        <section class="error-section">
+            <h1>Страница не найдена</h1>
+            <p>Извините, но страница, которую вы ищете, не существует.</p>
+            <a href="{% url 'auth' %}" class="home-button">На главную</a>
+        </section>
+    </main>
+</body>
+</html>

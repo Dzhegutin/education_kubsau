@@ -228,6 +228,7 @@ svg * {
   background-color: var(--color-dark);
   width: 100%;
   position: fixed;
+
  }
 
 
@@ -395,4 +396,30 @@ input.submit {
 
 .test-detail-link:hover {
     color: var(--color-gray);
+}
+
+.edit-test-link {
+    background-color: #4CAF50; /* Зеленый цвет */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px; /* Добавляем отступ между кнопками */
+    border-radius: 5px; /* Добавляем закругленные углы */
+}
+
+.test-detail-link {
+    background-color: #8A2BE2; /* Фиолетовый цвет */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: 10px; /* Добавляем отступ между кнопками */
+    border-radius: 5px; /* Добавляем закругленные углы */
 }

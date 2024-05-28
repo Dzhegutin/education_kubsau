@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.status === 'success') {
                 alert('Профиль успешно обновлен!');
-                // Дополнительные действия после успешного обновления профиля
             } else {
                 alert('Ошибка при обновлении профиля.');
             }
@@ -68,7 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.status === 'success') {
                 alert('Аватар успешно обновлен!');
-                // Можно выполнить дополнительные действия после успешного обновления аватара
             } else {
                 alert('Ошибка при обновлении аватара.');
             }

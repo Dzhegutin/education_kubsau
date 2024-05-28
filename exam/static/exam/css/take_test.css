@@ -1,0 +1,246 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-gray);
+    font-size: 14px;
+    line-height: 1.75;
+    font-weight: 300;
+    background: url('/static/exam/images/Мои тесты.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+ .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 20px;
+  background-color: var(--color-dark);
+  width: 100%;
+  position: fixed;
+ }
+
+
+.title-form {
+    display: flex;
+    align-items: center;
+    color: #EEEEEE;
+    font-size: 22px;
+    margin-left: 8px;
+}
+
+.header-menu-list {
+    display: flex;
+    column-gap: 70px;
+}
+
+.header-menu-link {
+    text-decoration: none;
+    font-size: 22px;
+    height: 70px;
+    align-items: center;
+    column-gap: 7px;
+    color: #EEEEEE;
+}
+
+.header-menu-link.is-current::after {
+    content: '';
+    width: 5px;
+    aspect-ratio: 1;
+    background-color: #EEEEEE;
+    border-radius: 50%;
+}
+
+.search_block form {
+    width: 300px;
+    display: flex;
+    align-items: center;
+}
+
+input.search {
+    border-style: solid;
+    width: 307px;
+    height: 36px;
+    border-color: #EEEEEE;
+    border-top-left-radius: 34px;
+    border-bottom-left-radius: 34px;
+    padding-left: 15px;
+    border-right: 0;
+    outline: 0;
+    background: transparent;
+    color: #FFFFFF;
+}
+
+input.submit {
+    background: url("https://img.icons8.com/ffffff/search") center center/50% auto no-repeat #6366F1;
+    border: 0;
+    width: 54px;
+    height: 36px;
+    border-top-right-radius: 34px;
+    border-bottom-right-radius: 34px;
+}
+
+.search::placeholder {
+    color: #FFFFFF;
+}
+
+@media (max-width: 1024px) {
+    .header {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        padding-top: 20px;
+    }
+
+    .header,
+    .banner {
+        padding-inline: 15px;
+    }
+
+    .header-menu {
+        order: 1;
+        flex-basis: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .header-menu-link {
+        height: 50px;
+    }
+
+    .search_block {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+.main-content {
+    padding: 100px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title-banner {
+    background: linear-gradient(#6366F1, #9381F4, #D4A7F8);
+    padding: 15px 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 36px;
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.test-container {
+    max-width: 70%;
+    margin: 0 auto;
+    background: linear-gradient#6366F1, #9381F4, #D4A7F8);
+    padding: 30px;
+    border-radius: 8px;
+    color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.test-container h2 {
+    font-size: 24px;
+    color: #FFFFFF;
+    margin-bottom: 15px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.option-button {
+    padding: 15px;
+    margin: 5px 0;
+    background-color: #6366F1;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #9381F4;
+    transform: scale(1.05);
+}
+
+.option-button.selected {
+    background-color: #28a745 !important;
+}
+
+.task-hint {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    color: #00FF00; /* Зеленый цвет для подсказок */
+}
+
+.hint-button {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.hint-button:hover {
+    background-color: #495057;
+}
+
+.pagination-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination-buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.pagination-buttons button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.submit-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-button button {
+    padding: 15px 30px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-button button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
